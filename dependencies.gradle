@@ -1,0 +1,45 @@
+ext {
+    versions = [:]
+    libraries = [:]
+}
+
+versions.lombok = '1.18.28'
+
+versions.logback = '1.4.11'
+versions.slf4j = '2.0.7'
+
+versions.junit = '5.10.0'
+versions.truth = '1.1.5'
+
+versions.groovy = '4.0.15'
+versions.spock = '2.4-M1-groovy-4.0'
+versions.spockReports = '2.5.1-groovy-4.0'
+
+libraries.lombok = [
+        "org.projectlombok:lombok:${versions.lombok}"
+]
+
+libraries.logback = [
+        "ch.qos.logback:logback-core:${versions.logback}",
+        "ch.qos.logback:logback-classic:${versions.logback}",
+        "org.slf4j:slf4j-api:${versions.slf4j}"
+]
+
+libraries.junit = [
+        "org.junit.jupiter:junit-jupiter-api:${versions.junit}",
+        "org.junit.jupiter:junit-jupiter-params:${versions.junit}",
+        "org.junit.jupiter:junit-jupiter-engine:${versions.junit}"
+]
+
+libraries.assert = [
+        "com.google.truth:truth:${versions.truth}"
+]
+
+libraries.spock = [
+   "org.apache.groovy:groovy-all:${versions.groovy}",
+   "org.spockframework:spock-core:${versions.spock}"
+]
+
+libraries.spockReports = [
+   "com.athaydes:spock-reports:${versions.spockReports}"
+]

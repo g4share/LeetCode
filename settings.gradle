@@ -1,0 +1,4 @@
+rootProject.name = 'LeetCode Problems'
+
+include ':common',
+        ':lib'

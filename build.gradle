@@ -1,0 +1,57 @@
+apply from: 'dependencies.gradle'
+
+allprojects {
+    version = '0.1'
+}
+
+subprojects {
+
+    apply plugin: 'groovy'
+    apply plugin: 'jacoco'
+    apply plugin: 'checkstyle'
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    dependencies {
+        compileOnly libraries.lombok
+
+        implementation libraries.logback
+
+        testCompileOnly libraries.lombok
+
+        testImplementation libraries.spock
+        testImplementation libraries.junit
+        testImplementation libraries.assert
+        testImplementation (libraries.spockReports) {
+            transitive = false
+        }
+
+        annotationProcessor libraries.lombok
+        
+        testAnnotationProcessor libraries.lombok
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    test {
+        useJUnitPlatform()
+        finalizedBy jacocoTestReport
+    }
+
+    jacocoTestReport {
+        dependsOn test
+    }
+
+    jacocoTestReport {
+        reports {
+            xml.required = false
+            html.required = true
+            csv.required = false
+        }
+    }
+}
